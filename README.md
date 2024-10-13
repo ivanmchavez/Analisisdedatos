@@ -69,3 +69,36 @@ image_dataset_from_directory de tensorflow.keras.utils:
 
 Función: Crea un dataset de imágenes directamente desde un directorio. Aquí se usa para cargar y preparar las imágenes que serán utilizadas para entrenar el modelo.
 Implicación: Proporciona un método eficiente para cargar imágenes en un formato que el modelo de TensorFlow puede usar directamente.
+
+#Evaluatemodel
+1. Pandas (import pandas as pd):
+Función: Como en los ejemplos anteriores, Pandas se utiliza para cargar y manejar los datos tabulares del archivo CSV, que contiene información sobre las imágenes (URL) y los "likes". Pandas facilita la carga y manipulación de los datos en forma de dataframes.
+Implicación: Es una herramienta clave para manejar los datos de entrada antes de que se procesen y clasifiquen.
+2. TensorFlow (import tensorflow as tf):
+Función: Se utiliza para cargar el modelo preentrenado con la función load_model. TensorFlow es la biblioteca principal para construir y entrenar redes neuronales, pero en este caso se usa principalmente para la predicción y evaluación del modelo.
+Implicación: TensorFlow es responsable de evaluar el rendimiento del modelo y predecir las clases de las imágenes en el conjunto de prueba.
+3. DataLoader:
+Función: DataLoader es una clase definida previamente que carga las imágenes desde el directorio y las convierte en un dataset utilizable por TensorFlow. Se usa aquí para cargar el conjunto de prueba.
+Implicación: Simplifica la preparación del dataset de imágenes para su evaluación.
+4. NumPy (import numpy as np):
+Función: NumPy se utiliza para realizar operaciones numéricas en matrices y arreglos. Aunque no se usa explícitamente en el código mostrado, NumPy es la base de muchas operaciones en TensorFlow y es comúnmente necesario para manejar datos numéricos.
+Implicación: Esencial para procesar y manejar datos de predicción, ya que las salidas del modelo son arreglos NumPy.
+5. Scikit-learn (from sklearn.metrics):
+Función: Se usa para calcular métricas de evaluación del rendimiento del modelo:
+precision_score: Mide la precisión del modelo (proporción de verdaderos positivos sobre todas las predicciones positivas).
+recall_score: Mide el recall o sensibilidad (proporción de verdaderos positivos sobre todos los casos reales positivos).
+f1_score: Combina precisión y recall en una única métrica (media armónica entre ambos).
+roc_auc_score: Mide el área bajo la curva ROC, que es un indicador de la capacidad del modelo para distinguir entre clases.
+confusion_matrix: Crea una matriz de confusión para visualizar el rendimiento de la clasificación.
+Implicación: Estas métricas ofrecen una evaluación detallada del rendimiento del modelo y permiten comparar la efectividad de las predicciones con las etiquetas reales.
+6. Seaborn (import seaborn as sns):
+Función: Seaborn es una biblioteca basada en Matplotlib que facilita la creación de gráficos estadísticos. Aquí se utiliza para generar el gráfico de la matriz de confusión con sns.heatmap.
+Implicación: Proporciona una visualización clara y atractiva de la matriz de confusión para evaluar visualmente el rendimiento del modelo.
+7. Matplotlib (import matplotlib.pyplot as plt):
+Función: Matplotlib es la biblioteca principal para crear gráficos en Python. Aquí se usa junto con Seaborn para mostrar la matriz de confusión.
+Implicación: Permite la visualización de los resultados del modelo, ayudando a los usuarios a entender el rendimiento del modelo de manera gráfica.
+Funcionalidad del Código:
+EvaluateModel: Esta clase se encarga de cargar el dataset de prueba, evaluar el modelo entrenado y visualizar los resultados de las predicciones. Tiene tres métodos principales:
+evaluate(): Calcula la pérdida y precisión del modelo en el conjunto de prueba.
+predict(): Realiza predicciones sobre un número de lotes del conjunto de prueba y calcula las métricas de precisión, recall, F1 y AUC-ROC.
+plot_confusion_matrix(): Genera y visualiza una matriz de confusión para ver qué tan bien el modelo clasificó las imágenes.
